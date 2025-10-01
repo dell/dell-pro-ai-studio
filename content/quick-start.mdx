@@ -1,0 +1,48 @@
+import { Steps } from 'nextra/components'
+
+# Getting Started with Dell Pro AI Studio
+
+Dell Pro AI Studio (`dpais`) offers a command-line-driven experience for quickly setting up and running AI models on supported Dell machines. This guide walks you through the basic setup: from installation to running your first model.
+
+<Steps>
+
+### Install the CLI
+
+To install the Dell Pro AI Studio CLI, you can use **Winget** (Windows Package Manager):
+
+```bash
+winget install Dell.DPAIS
+```
+
+Alternatively, download the MSI installer manually from [here](https://dell.hf.co) and follow the setup prompts.
+
+After installation, ensure the CLI is accessible via your terminal by running:
+```bash
+dpais --version
+```
+
+### Initialize Dell Pro AI Studio
+To set up your Dell Pro AI Studio environment, run the following command in your terminal:
+
+```bash
+dpais init
+```
+
+This command will help install necessary dependencies and prepare your system for running AI models. You will be prompted to select and install your first AI models during this process.
+
+### 3. Run a Sample Model
+To test your setup, you can run a sample model. Use the following command:
+
+```bash
+dpais model run
+```
+You'll get a in-terminal prompt to select a model, enter a query, and the model will generate a response.
+
+![Quick Start CLI output](./assets/quick-start-cli.png)
+
+</Steps>
+
+
+## What's Next?
+
+Read the How-To-Guides or [SDK examples](/interfacing-sdk) for more detailed information on interfacing with Dell Pro AI Studio to build AI applications.
