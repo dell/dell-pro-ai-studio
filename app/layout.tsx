@@ -11,7 +11,7 @@ export const metadata = {
     // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 }
 
-const banner = <Banner storageKey="v1.1">V1.1 is out now!</Banner>
+const banner = <Banner storageKey="v1.1">v1.1 is out now!</Banner>
 const navbar = (
     <Navbar
 logo={
@@ -37,7 +37,7 @@ logo={
 }
 
         // ... Your additional navbar options
-        projectLink="https://github.com/dell/dvd-ai-pc-rag"
+        projectLink="https://github.com/dell/dell-pro-ai-studio"
     />
 )
 
