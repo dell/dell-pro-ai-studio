@@ -182,7 +182,7 @@
       "license": "Apache 2.0",
       "type": "LLM",
       "platform": "X64",
-      "hardware": "NPU",
+      "hardware": "GPU",
       "hardwareVendor": "Intel",
       "zipUrl": "http://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/model/llamacpp/Dell.Model.Devstral-Small-2507.GPU.LCPP-CUDA.x64.zip",
       "zipName": "Dell.Model.Devstral-Small-2507.GPU.LCPP-CUDA.x64.zip",
