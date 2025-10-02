@@ -36,6 +36,7 @@ export default function CardsWithFilter() {
         title: model.model, 
         platform: model.platform,
         hardware: model.hardware,
+        hardwareVendor: model.hardwareVendor,
         type: model.type,
         text: model.description,
         tagline: model.tagline,

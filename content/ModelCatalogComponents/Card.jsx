@@ -10,7 +10,7 @@ const iconMap = {
   platform: PlatformIcon,
 };
 
-export const Card = ({ title, text, buttons, details, platform = null, type, hardware }) => {
+export const Card = ({ title, text, buttons, details, platform = null, type, hardware, hardwareVendor }) => {
   const actionButtons = buttons.filter(btn => !btn.label.trim().startsWith('>'));
   const snippet = buttons.find(btn => btn.label.trim().startsWith('>'));
   
@@ -36,7 +36,7 @@ export const Card = ({ title, text, buttons, details, platform = null, type, har
         {title}
         {platform && <Chip text={platform.toLowerCase()} onClick={()=>{}}></Chip>}
         {type && <Chip variant={"primary"} text={type} onClick={()=>{}}></Chip>}
-        {hardware && <Chip variant={"success"} text={hardware} onClick={()=>{}}></Chip>}
+        {hardware && <Chip variant={"success"} text={`${hardware} ${hardware != "CPU" ? `- ${hardwareVendor}` : ""}`} onClick={()=>{}}></Chip>}
       </h2>
 
       {text && <p className="x:text-gray-600 x:dark:text-gray-400 x:text-sm">{text}</p>}
