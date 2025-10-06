@@ -1,0 +1,45 @@
+name: Update Dell Manifest
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-update:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download latest manifest
+        run: |
+          curl -sSL https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/Manifest.json -o new_manifest.json
+
+      - name: Compare with existing
+        id: compare
+        run: |
+          if [ ! -f content/assets/Manifest.json ]; then
+            echo "No existing manifest found. Will create one."
+            echo "update=true" >> $GITHUB_OUTPUT
+          elif ! cmp -s new_manifest.json content/assets/Manifest.json; then
+            echo "Manifest changed."
+            echo "update=true" >> $GITHUB_OUTPUT
+          else
+            echo "Manifest unchanged."
+            echo "update=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update repo with new manifest
+        if: steps.compare.outputs.update == 'true'
+        run: |
+          mv new_manifest.json content/assets/Manifest.json
+          git config user.name "Jonathan Samuel"
+          git config user.email "Jonathan.Samuel@dell.com"
+          git add content/assets/Manifest.json
+          git commit -m "Update Manifest.json"
+          git push
