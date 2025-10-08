@@ -3,18 +3,25 @@
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-        baseURL: 'http://localhost:8553/v1/openai',
-        apiKey: 'dpais'
+    baseURL: 'http://localhost:8553/v1/openai',
+    apiKey: 'dpais'
 });
 
 async function main() {
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a Dell B2B Marketing Assistant. You specialize in developing digital campaigns, sales enablement content, and positioning strategies for Dell PCs across SMB and enterprise markets. Use Dell branding language and emphasize performance, reliability, and Total Cost of Ownership (TCO)." },
-               {"role": "user", "content": "How can I create a LinkedIn campaign that highlights Dell Latitude laptops for hybrid workers?"}],
-    model: "phi3.5",
-  });
-  
-  console.log(completion.choices[0].message.content);
+    const completion = await openai.chat.completions.create({
+        messages: [{
+                role: "system",
+                content: "You are a creative writing assistant who helps improve clarity and tone."
+            },
+            {
+                role: "user",
+                content: "Write a short story about a time traveler who accidentally becomes their own ancestor."
+            }
+        ],
+        model: "phi3.5",
+    });
+
+    console.log(completion.choices[0].message.content);
 }
 
 main();
