@@ -1,17 +1,17 @@
 import { Tabs } from 'nextra/components'
 
-# Integrating SDKs with Dell Pro AI Studio
+# Integrating SDKs with Local OpenAI-Compatible Services
 
-This guide shows you how to connect your applications to a locally running Dell-compatible inference service using the OpenAI-style SDKs. It includes setup, code samples in Python, JavaScript, .NET, cURL, streaming responses, and error handling.
+This guide demonstrates how to connect your applications to a locally running OpenAI-compatible inference service using official SDKs. It includes setup, code samples in Python, JavaScript, .NET, cURL, streaming responses, and error handling.
 
 ---
 
 ### Prerequisites
 
-* A running Dell Pro AI Studio Inference service at `http://localhost:8553/v1/openai`
-* Models downloaded/cached on the local service or accessible via alias/model ID
-* SDKs installed for your language (Python, JS, .NET)
-* (Optional) Environment configured for authentication, if required
+* A running inference service at `http://localhost:8553/v1/openai`
+* Models downloaded/cached locally or accessible via alias/model ID
+* SDKs installed for your preferred language (Python, JS, .NET)
+* (Optional) Authentication configured if your service requires it
 
 ---
 
@@ -49,7 +49,7 @@ This guide shows you how to connect your applications to a locally running Dell-
 
 ---
 
-### Using the OpenAI SDK with Dell Pro AI Studio
+### Using the OpenAI SDK with a Local Endpoint
 
 <Tabs items={['Python', 'JavaScript', 'C#', 'cURL']}>
 <Tabs.Tab>
@@ -57,24 +57,24 @@ This guide shows you how to connect your applications to a locally running Dell-
 ```python
 from openai import OpenAI
 
-client = OpenAI(api_key="dpais", base_url="http://localhost:8553/v1/openai")
+client = OpenAI(api_key="localkey", base_url="http://localhost:8553/v1/openai")
 
 response = client.chat.completions.create(
     model="phi3.5",
     messages=[
         {
             "role": "system",
-            "content": "You are a Dell B2B Marketing Assistant..."
+            "content": "You are a creative writing assistant who helps improve clarity and tone."
         },
         {
             "role": "user",
-            "content": "How can I create a LinkedIn campaign that highlights Dell Latitude laptops for hybrid workers?"
+            "content": "Write a short story about a time traveler who accidentally becomes their own ancestor."
         }
     ]
 )
 
 print(response.choices[0].message.content)
-```
+````
 
 </Tabs.Tab>
 <Tabs.Tab>
@@ -84,15 +84,15 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   baseURL: "http://localhost:8553/v1/openai",
-  apiKey: "dpais",
+  apiKey: "localkey",
 });
 
 async function main() {
   const completion = await openai.chat.completions.create({
     model: "phi3.5",
     messages: [
-      { role: "system", content: "You are a Dell B2B Marketing Assistant..." },
-      { role: "user", content: "How can I create a LinkedIn campaign that highlights Dell Latitude laptops for hybrid workers?" }
+      { role: "system", content: "You are a creative writing assistant who helps improve clarity and tone." },
+      { role: "user", content: "Write a short story about a time traveler who accidentally becomes their own ancestor." }
     ]
   });
 
@@ -110,7 +110,7 @@ using OpenAI;
 
 var client = new OpenAIClient(new OpenAIClientOptions
 {
-  ApiKey = "dpais",
+  ApiKey = "localkey",
   BaseUrl = "http://localhost:8553/v1/openai"
 });
 
@@ -119,8 +119,8 @@ var response = await client.Chat.Completions.CreateAsync(new ChatCompletionReque
   Model = "phi3.5",
   Messages = new List<ChatMessage>
   {
-      new ChatMessage("system", "You are a Dell B2B Marketing Assistant..."),
-      new ChatMessage("user", "How can I create a LinkedIn campaign that highlights Dell Latitude laptops for hybrid workers?")
+      new ChatMessage("system", "You are a creative writing assistant who helps improve clarity and tone."),
+      new ChatMessage("user", "Write a short story about a time traveler who accidentally becomes their own ancestor.")
   }
 });
 
@@ -132,13 +132,13 @@ Console.WriteLine(response.Choices[0].Message.Content);
 
 ```bash
 curl http://localhost:8553/v1/openai/chat/completions \
-  -H "Authorization: Bearer dpais" \
+  -H "Authorization: Bearer localkey" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "phi3.5",
     "messages": [
-      { "role": "system", "content": "You are a Dell B2B Marketing Assistant..." },
-      { "role": "user", "content": "How can I create a LinkedIn campaign that highlights Dell Latitude laptops for hybrid workers?" }
+      { "role": "system", "content": "You are a creative writing assistant who helps improve clarity and tone." },
+      { "role": "user", "content": "Write a short story about a time traveler who accidentally becomes their own ancestor." }
     ]
   }'
 ```
@@ -155,7 +155,7 @@ curl http://localhost:8553/v1/openai/chat/completions \
 ```python
 for chunk in client.chat.completions.create(
     model="phi3.5",
-    messages=[{"role": "user", "content": "Generate campaign taglines for hybrid laptop use"}],
+    messages=[{"role": "user", "content": "List five futuristic startup ideas"}],
     stream=True
 ):
     if chunk.choices[0].delta.content:
@@ -168,7 +168,7 @@ for chunk in client.chat.completions.create(
 ```javascript
 const stream = await openai.chat.completions.create({
   model: "phi3.5",
-  messages: [{ role: "user", content: "Generate campaign taglines for hybrid laptop use" }],
+  messages: [{ role: "user", content: "List five futuristic startup ideas" }],
   stream: true
 });
 
@@ -187,7 +187,7 @@ await foreach (var update in client.Chat.Completions.CreateStreamingAsync(new Ch
     Model = "phi3.5",
     Messages = new List<ChatMessage>
     {
-        new ChatMessage("user", "Generate campaign taglines for hybrid laptop use")
+        new ChatMessage("user", "List five futuristic startup ideas")
     }
 }))
 {
@@ -203,11 +203,11 @@ await foreach (var update in client.Chat.Completions.CreateStreamingAsync(new Ch
 
 ```bash
 curl http://localhost:8553/v1/openai/chat/completions \
-  -H "Authorization: Bearer dpais" \
+  -H "Authorization: Bearer localkey" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "phi3.5",
-    "messages": [{"role": "user", "content": "Generate campaign taglines for hybrid laptop use"}],
+    "messages": [{"role": "user", "content": "List five futuristic startup ideas"}],
     "stream": true
   }'
 ```
@@ -224,12 +224,12 @@ curl http://localhost:8553/v1/openai/chat/completions \
 ```python
 from openai import OpenAI, APIError
 
-client = OpenAI(api_key="dpais", base_url="http://localhost:8553/v1/openai")
+client = OpenAI(api_key="localkey", base_url="http://localhost:8553/v1/openai")
 
 try:
     response = client.chat.completions.create(
         model="phi3.5",
-        messages=[{"role": "user", "content": "Give me a summary of Dell Latitude benefits"}]
+        messages=[{"role": "user", "content": "Summarize the principles of thermodynamics"}]
     )
     print(response.choices[0].message.content)
 except APIError as e:
@@ -246,14 +246,14 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   baseURL: "http://localhost:8553/v1/openai",
-  apiKey: "dpais",
+  apiKey: "localkey",
 });
 
 async function run() {
   try {
     const completion = await openai.chat.completions.create({
       model: "phi3.5",
-      messages: [{ role: "user", content: "Give me a summary of Dell Latitude benefits" }],
+      messages: [{ role: "user", content: "Summarize the principles of thermodynamics" }],
     });
     console.log(completion.choices[0].message.content);
   } catch (err) {
@@ -272,7 +272,7 @@ using OpenAI;
 
 var client = new OpenAIClient(new OpenAIClientOptions
 {
-    ApiKey = "dpais",
+    ApiKey = "localkey",
     BaseUrl = "http://localhost:8553/v1/openai"
 });
 
@@ -283,7 +283,7 @@ try
         Model = "phi3.5",
         Messages = new List<ChatMessage>
         {
-            new ChatMessage("user", "Give me a summary of Dell Latitude benefits")
+            new ChatMessage("user", "Summarize the principles of thermodynamics")
         }
     });
     Console.WriteLine(response.Choices[0].Message.Content);
@@ -303,13 +303,12 @@ catch (Exception ex)
 
 ```bash
 curl http://localhost:8553/v1/openai/chat/completions \
-  -H "Authorization: Bearer dpais" \
+  -H "Authorization: Bearer localkey" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "phi3.5",
-    "messages": [{"role": "user", "content": "Give me a summary of Dell Latitude benefits"}]
+    "messages": [{"role": "user", "content": "Summarize the principles of thermodynamics"}]
   }' || echo "Request failed"
 ```
 
-</Tabs.Tab> 
-</Tabs>
+</Tabs.Tab> </Tabs>
