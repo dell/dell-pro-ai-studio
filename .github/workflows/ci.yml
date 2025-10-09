@@ -5,12 +5,21 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Update Dell Manifest"]
+    types:
+      - completed
 
 permissions:
   contents: write
 
 jobs:
   build-and-deploy:
+    if: >
+        github.event_name == 'push' ||
+        (github.event_name == 'workflow_run' &&
+         github.event.workflow_run.conclusion == 'success' &&
+         github.event.workflow_run.outputs.manifest_updated == 'true')
     runs-on: [ubuntu-latest]
     steps:
       - name: Checkout source code
