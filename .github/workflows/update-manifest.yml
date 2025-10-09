@@ -43,3 +43,11 @@ jobs:
           git add content/assets/Manifest.json
           git commit -m "Update Manifest.json"
           git push
+
+      - name: Trigger Deploy Docs workflow
+        if: steps.compare.outputs.update == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Triggering Deploy Docs to GitHub Pages workflow..."
+          gh workflow run "Deploy Docs to GitHub Pages"
