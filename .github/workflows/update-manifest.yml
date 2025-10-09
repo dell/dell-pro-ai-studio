@@ -45,3 +45,8 @@ jobs:
           git add content/assets/Manifest.json
           git commit -m "Update Manifest.json"
           git push
+
+  deploy-docs:
+    needs: check-and-update
+    if: needs.check-and-update.outputs.manifest_updated == 'true'
+    uses: ./.github/workflows/deploy-docs.yml
