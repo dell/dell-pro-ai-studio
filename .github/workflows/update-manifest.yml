@@ -11,6 +11,8 @@ permissions:
 jobs:
   check-and-update:
     runs-on: [ubuntu-latest]
+    outputs:
+      manifest_updated: ${{ steps.compare.outputs.update }}
 
     steps:
       - name: Checkout repo
