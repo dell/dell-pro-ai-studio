@@ -59,6 +59,7 @@ export default async function RootLayout({children}) {
         >
             <link rel="shortcut icon" href="favicon.ico"/>
             <link rel="icon" href="favicon.ico"/>
+            <meta name="google-site-verification" content="NbXzpY7h8fEKd29X_PUAoUsWS8yXobliCRAfW1yejSY" />
 
             {/* Your additional tags should be passed as `children` of `<Head>` element */}
         </Head>
