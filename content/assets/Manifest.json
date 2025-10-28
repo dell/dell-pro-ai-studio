@@ -57,7 +57,7 @@
       "type": "LLM",
       "platform": "X64",
       "hardware": "GPU",
-      "hardwareVendor": "Intel",
+      "hardwareVendor": "Nvidia",
       "zipUrl": "http://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/model/llamacpp/Dell.Model.Devstral-Small-2507.GPU.LCPP-CUDA.x64.zip",
       "zipName": "Dell.Model.Devstral-Small-2507.GPU.LCPP-CUDA.x64.zip",
       "description": "Devstral is an open-source agentic LLM for software engineering. It excels at using tools to explore codebases, editing multiple files and power software engineering agents. NOTE: Must install CUDA toolkit v12 to use GPU inference.",
