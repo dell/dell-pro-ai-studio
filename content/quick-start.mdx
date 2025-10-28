@@ -8,11 +8,12 @@ Dell Pro AI Studio (`dpais`) offers a command-line-driven experience for quickly
 
 ### Install the CLI
 
-To install the Dell Pro AI Studio CLI, you can use **Winget** (Windows Package Manager):
+To install the Dell Pro AI Studio CLI, you can run the below command in Powershell or CMD (Downloads and installs cli):
 
 ```bash
-winget install Dell.DPAIS
+powershell -Command "iwr https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/cli/dpais-cli.x64.msi -OutFile $env:TEMP\dpais.msi; Start-Process msiexec -Wait -ArgumentList '/i',$env:TEMP\dpais.msi"
 ```
+Note: You must open a new shell session after installing (adds to PATH)
 
 Alternatively, download the MSI installer manually from [here](https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/cli/dpais-cli.x64.msi) and follow the setup prompts.
 
