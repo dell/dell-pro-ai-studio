@@ -7,7 +7,7 @@
     "ARM64": "https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/client/Dell.AI.Framework.arm64.zip"
   },
   "coreversion": {
-    "dellcoreservices": "1.13.2.0",
+    "dellcoreservices": "1.11.11.0",
     "dellaiframework": "1.1.547.0"
   },
   "coreguid": {
