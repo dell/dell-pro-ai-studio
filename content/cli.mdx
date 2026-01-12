@@ -30,9 +30,12 @@ The `init` command is the starting point. It prepares your system by installing 
 
 ### Install here:
 
+To install the Dell Pro AI Studio CLI, you can run the below command in Powershell or CMD (Downloads and installs cli):
+
 ```bash
-winget install Dell.DPAIS
+powershell -Command "iwr https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/cli/dpais-cli.x64.msi -OutFile $env:TEMP\dpais.msi; Start-Process msiexec -Wait -ArgumentList '/i',$env:TEMP\dpais.msi"
 ```
+Note: You must open a new shell session after installing (adds to PATH)
 
 [Download](https://dellupdater.dell.com/non_du/ClientService/endpointmgmt/dpais/cli/dpais-cli.x64.msi)
 ### Run the `init` command
