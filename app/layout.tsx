@@ -57,6 +57,15 @@ export default async function RootLayout({children}) {
         <Head
             // ... Your additional head options
         >
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y15TEW0MZ"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-5Y15TEW0MZ');
+            </script>
             <link rel="shortcut icon" href="favicon.ico"/>
             <link rel="icon" href="favicon.ico"/>
             <meta name="google-site-verification" content="NbXzpY7h8fEKd29X_PUAoUsWS8yXobliCRAfW1yejSY" />
