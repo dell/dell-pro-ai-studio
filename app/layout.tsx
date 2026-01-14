@@ -1,6 +1,7 @@
 import {Footer, LastUpdated, Layout, Navbar} from 'nextra-theme-docs'
 import {Banner, Head} from 'nextra/components'
 import {getPageMap} from 'nextra/page-map'
+import { GoogleTagManager } from '@next/third-parties/google'
 import 'nextra-theme-docs/style.css'
 import Image from 'next/image'
 import DellLogo from 'content/assets/Dell_Technologies_logo.svg'
@@ -54,6 +55,7 @@ export default async function RootLayout({children}) {
             // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
             suppressHydrationWarning
         >
+        <GoogleTagManager gtmId="G-5Y15TEW0MZ" />
         <Head
             // ... Your additional head options
         >
