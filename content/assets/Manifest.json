@@ -83,7 +83,7 @@
       "modelSize": "32.2B params",
       "supportedLanguages": [ "English", "German", "Spanish", "French", "Japanese", "Portuguese", "Arabic", "Czech", "Italian", "Korean", "Dutch", "Chinese" ],
       "tagline": "Enterprise ready Granite model for powerful, multilingual AI assistants. NOTE: Must install CUDA toolkit v12 to use GPU inference.",
-      "name": "GPU-granite-4.0-h-small",
+      "name": "dGPU/granite_4_0_h_small",
       "agentGuid": "2D47BFE0-DF0A-484B-A0C1-64356A27CC23",
       "hfRepo": "https://huggingface.co/ibm-granite/granite-4.0-h-small"
     },
@@ -101,7 +101,7 @@
       "modelSize": "6.67B params",
       "supportedLanguages": [ "English", "German", "Spanish", "French", "Japanese", "Portuguese", "Arabic", "Czech", "Italian", "Korean", "Dutch", "Chinese" ],
       "tagline": "Lightweight Granite model for multilingual, long context reasoning and AI assistants. NOTE: Must install CUDA toolkit v12 to use GPU inference.",
-      "name": "GPU-granite-4.0-h-tiny",
+      "name": "dGPU/granite_4_0_h_tiny",
       "agentGuid": "D2C55738-847C-4F49-BC0D-813A7A6744E8",
       "hfRepo": "https://huggingface.co/ibm-granite/granite-4.0-tiny-preview"
     },
@@ -209,7 +209,7 @@
       "modelSize": "4B params",
       "supportedLanguages": ["Arabic", "Chinese", "Czech", "Danish", "Dutch", "English", "Finnish", "French", "German", "Hebrew", "Hungarian", "Italian", "Japanese", "Korean", "Norwegian", "Polish", "Portuguese", "Russian", "Spanish", "Swedish", "Thai", "Turkish", "Ukrainian"],
       "tagline": "A lightweight open model built upon synthetic data and filtered publicly available websites - with a focus on high-quality, reasoning dense data.",
-      "name": "NPU-Phi-4-mini-instruct",
+      "name": "phi4",
       "agentGuid": "A9409A4B-833D-4F69-836A-C2EBDC80C9A1",
       "hfRepo": "https://huggingface.co/microsoft/Phi-4-mini-instruct"
     },
