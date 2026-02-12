@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.1.0",
   "cliversion": "1.0.476",
   "changelog": "",
   "coreinstallurl": {
@@ -70,7 +70,7 @@
       "hfRepo": "https://huggingface.co/mistralai/Devstral-Small-2507"
     },
     {
-      "model": "gemma-3n-E4B-it",
+      "model": "Gemma-3n-E4B-it",
       "license": "gemma",
       "type": "LLM",
       "platform": "X64",
